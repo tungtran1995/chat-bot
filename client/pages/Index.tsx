@@ -61,6 +61,15 @@ Best regards,
     }
   };
 
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value);
+
+    // Auto-resize textarea
+    const textarea = e.target;
+    textarea.style.height = 'auto';
+    textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
+  };
+
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Header */}
@@ -156,12 +165,12 @@ Best regards,
           <div className="relative bg-gray-900 rounded-2xl">
             <textarea
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={handleTextareaChange}
               onKeyPress={handleKeyPress}
               placeholder="Describe the component you want to create..."
-              className="w-full bg-transparent text-white placeholder-gray-400 p-4 pr-12 rounded-2xl resize-none focus:outline-none text-sm"
+              className="w-full bg-transparent text-white placeholder-gray-400 p-4 pr-12 rounded-2xl resize-none focus:outline-none text-sm overflow-y-auto"
               rows={1}
-              style={{ minHeight: '52px' }}
+              style={{ minHeight: '52px', maxHeight: '200px' }}
             />
             <Button
               onClick={handleSendMessage}
