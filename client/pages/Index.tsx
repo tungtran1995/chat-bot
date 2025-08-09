@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, Plus, Settings, Copy, ThumbsUp, ThumbsDown, Bot } from 'lucide-react';
+import { Send, Plus, Settings, Copy, ThumbsUp, ThumbsDown, Bot, Paperclip, Mic, Edit3, Camera, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
@@ -161,27 +161,48 @@ Best regards,
 
       {/* Message Input */}
       <div className="border-t border-gray-200 p-4">
-        <div className="max-w-3xl mx-auto space-y-3">
-          <div className="bg-gray-900 rounded-2xl">
+        <div className="max-w-3xl mx-auto">
+          <div className="border-2 border-blue-300 rounded-2xl bg-gray-50 p-4">
             <textarea
               value={message}
               onChange={handleTextareaChange}
               onKeyPress={handleKeyPress}
-              placeholder="Describe the component you want to create..."
-              className="w-full bg-transparent text-white placeholder-gray-400 p-4 rounded-2xl resize-none focus:outline-none text-sm overflow-y-auto"
-              rows={1}
-              style={{ minHeight: '52px', maxHeight: '200px' }}
+              placeholder="Ask Fusion..."
+              className="w-full bg-transparent text-gray-900 placeholder-gray-500 resize-none focus:outline-none text-sm overflow-y-auto"
+              rows={3}
+              style={{ minHeight: '80px', maxHeight: '200px' }}
             />
-          </div>
-          <div className="flex justify-end">
-            <Button
-              onClick={handleSendMessage}
-              disabled={!message.trim()}
-              className="bg-purple-600 hover:bg-purple-700 text-white rounded-lg px-4 py-2 disabled:opacity-50 disabled:hover:bg-purple-600"
-            >
-              <Send className="w-4 h-4 mr-2" />
-              Send
-            </Button>
+
+            {/* Toolbar */}
+            <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-200">
+              <div className="flex items-center gap-3">
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900 p-2 h-8 w-8">
+                  <Plus className="w-4 h-4" />
+                </Button>
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900 p-2 h-8 w-8">
+                  <Paperclip className="w-4 h-4" />
+                </Button>
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900 p-2 h-8 w-8">
+                  <Edit3 className="w-4 h-4" />
+                </Button>
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900 p-2 h-8 w-8">
+                  <Camera className="w-4 h-4" />
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900 p-2 h-8 w-8">
+                  <Settings className="w-4 h-4" />
+                </Button>
+                <Button
+                  onClick={handleSendMessage}
+                  disabled={!message.trim()}
+                  className="bg-gray-900 hover:bg-gray-800 text-white rounded-lg p-2 h-8 w-8 disabled:opacity-50 disabled:hover:bg-gray-900"
+                >
+                  <Upload className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
